@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+        }
+
+        .calculator {
+            background: #333;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .screen {
+            background: #444;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            font-size: 24px;
+            border: none;
+            background: none;
+            color: #fff;
+            text-align: right;
+            outline: none;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            background: #555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background: #666;
+        }
+    </style>
+    <title>Máy Tính Cầm Tay</title>
+</head>
+<body>
+    <div class="calculator">
+        <div class="screen">
+            <input type="text" id="result" value="0">
+        </div>
+        <div class="buttons">
+            <button onclick="clearScreen()">C</button>
+            <button onclick="appendToScreen('7')">7</button>
+            <button onclick="appendToScreen('8')">8</button>
+            <button onclick="appendToScreen('9')">9</button>
+            <button onclick="appendToScreen('+')">+</button>
+            <button onclick="appendToScreen('4')">4</button>
+            <button onclick="appendToScreen('5')">5</button>
+            <button onclick="appendToScreen('6')">6</button>
+            <button onclick="appendToScreen('-')">-</button>
+            <button onclick="appendToScreen('1')">1</button>
+            <button onclick="appendToScreen('2')">2</button>
+            <button onclick="appendToScreen('3')">3</button>
+            <button onclick="appendToScreen('*')">*</button>
+            <button onclick="appendToScreen('0')">0</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="appendToScreen('/')">/</button>
+        </div>
+    </div>
+    <script>
+        let result = document.getElementById('result');
+
+        function appendToScreen(value) {
+            result.value += value;
+        }
+
+        function clearScreen() {
+            result.value = '';
+        }
+
+        function calculate() {
+            try {
+                result.value = eval(result.value);
+            } catch (error) {
+                result.value = 'Lỗi';
+            }
+        }
+    </script>
+</body>
+</html>
